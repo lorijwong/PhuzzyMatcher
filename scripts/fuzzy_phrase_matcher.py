@@ -1,14 +1,14 @@
 import spacy
 from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
+from spacy.language import Language 
 
 nlp = spacy.blank('en')
 
+@Language.factory("phuzzymatcher")
+class PhuzzyMatcher:
 
-class PhuzzyMatcher(object):
-    name = "phuzzy_matcher"
-
-    def __init__(self, nlp, set, fuzzy_matcher, match, label, stop_words = None):
+    def __init__(self, nlp: Language, name: str, set: list, match: int, label= None, stop_words = None):
         self.nlp = nlp
         self.set = set
         self.fuzzy_matcher = fuzzy_matcher
